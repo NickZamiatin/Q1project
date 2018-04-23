@@ -1,24 +1,19 @@
 
+body {
+  text-align: center;
+}
+
 .connectFour {
-  color: red;
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    border: solid 1px black;
-    border-radius: 50%;
-    overflow-Y: hidden;
-    overflow-X: hidden;
+  background: green;
+  display: inline-block;
+  background-image: url("https://www.google.com/search?rlz=1C5CHFA_enUS789US790&biw=1150&bih=553&tbm=isch&sa=1&ei=FjTeWqnvE5Ln_Qbx-ZyQBQ&q=wood+&oq=wood+&gs_l=psy-ab.3..0i67k1l4j0i10i67k1j0i67k1l3j0l2.12011.12994.0.13200.5.4.0.1.1.0.207.393.3j0j1.4.0....0...1c.1.64.psy-ab..0.5.397....0.hdqIorCI2FE#imgrc=QFktR1wUvaaNrM:");
 
 }
-
-.box {
-  float: left;
-  width: 10px;
-  height: 10px;
-  border: solid 1px black;
-  margin: 0;
-}
-
-div {
-  display: block;
-}
+ .column {
+   width: 70px;
+   height: 70px;
+   display: inline-block;
+   background-color: white ;
+   border-radius: 50%;
+   margin: 3px;
+ }

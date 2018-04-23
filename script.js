@@ -1,25 +1,39 @@
-class connectFour {
-  constructor(grid) {
-    this.ROWS = 6;
-    this.COLUMN = 7;
+
+function createGrid(params){
+
+  createElsIn(params.board, 'row', params.rows).forEach(row => {
+    createElsIn(row, 'column', params.cols)
+  });
+
+  return params.board;
+}
+
+
+function createElsIn(container, className, count) {
+  for (let index = 0; index < count; index++) {
+    let el = document.createElement('div');
+    el.classList.add(className);
+
+    container.appendChild(el);
   }
+
+  return Array.from(container.children);
 }
 
+createGrid({
+  board: document.querySelector('.connectFour'),
+  rows: 6,
+  cols: 7,
+})
 
 
+document.querySelector("footerLast");
 
-const  divClass = document.querySelector('.connectFour');
-var boxes = createDiscoBoxes(6, 7);
-function createDiscoBoxes(height, width) {
- var length = height*width;
 
- for (var index = 0; index < length; index++) {
-   var el = document.createElement('div');
-
-   el.classList.add('box');
-
-   disco.appendChild(el);
- }
-
- return disco.children;
-}
+// document.querySelector('name1').addEventListener('submit', function (event) {
+//   event.preventDefault()
+//
+//   var input = document.getElementById('name')
+//   setName(input.value)
+//   renderName()
+// })
