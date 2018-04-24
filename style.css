@@ -1,19 +1,29 @@
-
 body {
   text-align: center;
-}
-
-.connectFour {
-  background: green;
   display: inline-block;
-  background-image: url("https://www.google.com/search?rlz=1C5CHFA_enUS789US790&biw=1150&bih=553&tbm=isch&sa=1&ei=FjTeWqnvE5Ln_Qbx-ZyQBQ&q=wood+&oq=wood+&gs_l=psy-ab.3..0i67k1l4j0i10i67k1j0i67k1l3j0l2.12011.12994.0.13200.5.4.0.1.1.0.207.393.3j0j1.4.0....0...1c.1.64.psy-ab..0.5.397....0.hdqIorCI2FE#imgrc=QFktR1wUvaaNrM:");
+margin: 5% 0 0 10%;
+width: 60%;
 
 }
- .column {
-   width: 70px;
+
+.grid {
+  background-color: green;
+  display: inline-block;
+}
+ .gridEmpty {
    height: 70px;
+   width: 70px;
    display: inline-block;
    background-color: white ;
    border-radius: 50%;
-   margin: 3px;
+   margin : 4px;
  }
+
+.circleB {
+  background-color: white;
+width: 65px;
+height: 65px;
+border-radius: 50%;
+margin: auto;
+margin-top: 3px;
+}

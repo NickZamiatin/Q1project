@@ -1,39 +1,33 @@
 
-function createGrid(params){
+var boardArray = new Array(42);
 
-  createElsIn(params.board, 'row', params.rows).forEach(row => {
-    createElsIn(row, 'column', params.cols)
-  });
+function createBoard() {
+	var el = document.createElement('div');
+	el.className = 'grid';
+	document.querySelector('.connectFour').appendChild(el);
 
-  return params.board;
+
+	function square() {
+		var boardSquare = document.createElement('div');
+		boardSquare.className = 'gridEmpty ';
+		boardSquare.setAttribute('id', counter)
+
+		boardSquare.appendChild(circle());
+		return boardSquare;
+	}
+
+	function circle() {
+		var blankCircle = document.createElement('div');
+		blankCircle.className = 'circleB';
+		blankCircle.setAttribute('id', counter)
+		return blankCircle;
+	}
+
+	for (var counter = 0; counter < boardArray.length; counter++) {
+		el.appendChild(square());
+	}
+
+
 }
 
-
-function createElsIn(container, className, count) {
-  for (let index = 0; index < count; index++) {
-    let el = document.createElement('div');
-    el.classList.add(className);
-
-    container.appendChild(el);
-  }
-
-  return Array.from(container.children);
-}
-
-createGrid({
-  board: document.querySelector('.connectFour'),
-  rows: 6,
-  cols: 7,
-})
-
-
-document.querySelector("footerLast");
-
-
-// document.querySelector('name1').addEventListener('submit', function (event) {
-//   event.preventDefault()
-//
-//   var input = document.getElementById('name')
-//   setName(input.value)
-//   renderName()
-// })
+createBoard();
