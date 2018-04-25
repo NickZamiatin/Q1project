@@ -1,45 +1,28 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Q1 Project</title>
+    <title>Connect 4</title>
+    <link rel="stylesheet" href="style.css">
   </head>
+
   <body>
-       <div class="container">
-         <h1>Welcome to Q1 Project</h1>
-        <!-- <div class="head">
-          <div class="nameOfRedUsers">
-            <p>bla</p>
-            <img src="" alt="">
+    <h4 class="turn-announcement">It's <span id="player" class="red">red</span>'s turn!</h4>
 
-          </div>
-          <div class="nameOfBlackUsers">
-          <p>bla 2</p>
-          <img src="" alt="">
-          </div> -->
+    <div>
+      <div id="connect4"></div>
+    </div>
 
-        </div>
+    <button id="restart">Restart</button>
 
-        <div class="connectFour">
-        </div>
-        <div class="footerLast">
-          <div class="user">
-            <label>Type your name, player 1</label>
-            <input type="text" name="name" id="name1">
-            <input type="Submit" name="submit" id="submit1" value="Submit">
-          </div>
-
-          <div class="user">
-            <label>Type your name, player 2</label>
-            <input type="text" name="name" id="name2">
-            <input type="Submit" name="submit" id="submit2" value="Submit">
-          </div>
-
-          <footer> The Q1 Project was made by Nick Zamiatin 2018</footer>
-        </div>
-      </div>
+    <div class="users">
+      <label>Player for Red</label>
+      <input type="text" name="name" id="name1">
+      <input type="Submit" name="submit" id="submit1" value="Submit">
+      <br>
+      <label>Player for Black </label>
+      <input type="text" name="name" id="name2">
+      <input type="Submit" name="submit" id="submit2" value="Submit">
+   </div>
+     <footer> The Q1 Project was made by Nick Zamiatin 2018</footer>
     <script src="script.js"></script>
   </body>
 </html>

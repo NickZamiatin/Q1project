@@ -1,157 +1,240 @@
+(function(){
+  'use strict';
 
-const boardArray = new Array(42);
+  document.addEventListener('DOMContentLoaded', function() {
 
-function createGridConnectFour() {
-	let el = document.createElement('div');
-	el.className = 'grid';
-	document.querySelector('.connectFour').appendChild(el);
+    const ROWS = 6;
+    const COLS = 7;
+    let player = 'red';
+    let isGameOver = false;
 
-
-	function square() {
-		let boardSquare = document.createElement('div');
-		boardSquare.className = 'gridEmpty ';
-		boardSquare.setAttribute('id', count);
-
-		boardSquare.appendChild(circle());
-		return boardSquare;
-	}
-
-	function circle() {
-		let blankCircle = document.createElement('div');
-		blankCircle.className = 'circleB';
-		blankCircle.setAttribute('id', count);
-		return blankCircle;
-	}
-
-	for (var count = 0; count < boardArray.length; count++) {
-		el.appendChild(square());
-	}
-}
-
-createGridConnectFour();
+    const container = document.getElementById('connect4');
+    const playerSelector = document.getElementById('player');
 
 
-const user1 = { name : "user1", move : true, color : "red", num : 1};
-const user2 = { name : "user2", move : false, color : "black", num : 2};
-
-
-var wichUserTurns =  function() {
-	if (user1.move == true) {
-		return user1;
-	}
-	else {
-		return user2;
-	}
-}
- var  changeUser = ()=>{
-   if(user1.move == true){
-     user1.move == false;
-     user2.move == true;
-   } else {
-     user1.move == true;
-     user2.move == false;
-   }
- }
-
-// var newGrid = document.querySelector(".grid")
-//  newGrid.addEventListener("click",(e)=>{
-//    console.log(e.target.className)
-//    if ()
-//
-//  })
-const changeColor = (color)=>{
-  let newColor = document.createElement('div');
-  newColor.className = color;
-  newColor.className += "newColor";
-  return newColor;
-}
+      // The dollar sign is commonly used as a shortcut to the
+      // function document.getElementById(). Because this function is fairly verbose and used frequently in JavaScript,
+      //  the $ has long been used as its alias, and many of the libraries available for use with JavaScript
+      //  create a $() function that references an element from the DOM if you pass it the id of that element
 
 
 
-function animateChecker() {
-	var currentPlayer = wichUserTurns();
-	var column = this.id % 7;
-	var newColorUser = changeColor(currentPlayer.color);
-
-		for (var newColorCounter = 5; newColorCounter > -1; newColorCounter--) {
-			var squareId = column + (7 * newColorCounter)
-			squareId.toString();
-			var vacantCheck = document.getElementById(squareId);
-			if (vacantCheck.className == 'gridEmpty') {
-				vacantCheck.appendChild(newColorUser);
-				vacantCheck.className = 'gridHasColor';
-				arrOfGrid[squareId] = currentPlayer.number;
-				checkForWinner(squareId);
-				changeUser();
-			}
-		}
-}
-
-function checkForWinner(index) {
-	console.log(boardArray);
-
-    var countingToFour = 1;
-    var testCases = [1, 6, 7, 8];
-	var edges;
-    var edge1 = [0, 6, 7, 13, 14, 20, 21, 27, 28, 34, 35, 41];
-    var edge6 = [0, 1, 2, 3, 7, 14, 21, 28, 35, 36, 37, 38];
-    var edge7 = [0, 1, 2, 3, 4, 5, 6, 35, 36, 37, 38, 39, 40, 41];
-    var edge8 = [3, 4, 5, 6, 13, 20, 27, 34, 38, 39, 40, 41];
 
 
+    function onPlayerMove() {
+      playerSelector.textContent = player;
+      var className = player === 'red' ? 'red' : 'black';
+      playerSelector.classList.remove('red', 'black');
+      playerSelector.classList.add(className);
 
-    for (var counter0 = 0; counter0 < testCases.length; counter0++) {
+      if (player === 'red') {
+        updateTurn(playerOne || 'red');
+      } else {
+        updateTurn(playerTwo || 'black')
+      }
 
-    	// assign edge case set
-		if (testCases[counter0] === 1) {
-			 edges = edge1;
+    }
 
-		}
-		else if (testCases[counter0] === 6) {
-			 edges = edge6;
+    function createGrid() {
 
-		}
-		else if (testCases[counter0] === 7) {
-			 edges = edge7;
-		}
-		else if (testCases[counter0] === 8) {
-			 edges = edge8;
-		}
+      for (var row = 0; row < ROWS; row++) {
 
-		// check edge cases
-		for (var count = 0; count < edges.length; count++) {
+        var $row = document.createElement('div')
+            $row.classList.add('row');
+
+        for (var col = 0; col < COLS; col++) {
+
+          var $col = document.createElement('div')
+              $col.classList.add('col', 'empty');
+              $col.setAttribute('data-col', col);
+              $col.setAttribute('data-row', row);
+
+          $row.appendChild($col);
+
+        }
+
+        container.appendChild($row);
+      }
+    }
 
 
-		if ((boardArray[index] === boardArray[index - testCases[counter0]]
-			&& boardArray[index - testCases[counter0]] !== edges[count] )
-			|| (boardArray[index] === boardArray[index + testCases[counter0]]
-				&& boardArray[index + testCases[counter0]] !== edges[count])) {
+    function setupEventListeners() {
 
-     			// when a match is found, check the next cell in that direction (-/+)
-     		for(var i = index; boardArray[i] === boardArray[i-testCases[counter0]]; i-=testCases[counter0]) {
-     			countingToFour++;
-     				//console.log("loop2");
-     				if (countingToFour === 4) {
-     					alert("Player " + boardArray[index] + " wins!");
-     					resetGame();
-     					return "Winner";
-     				}
+      var emptyCols = document.querySelectorAll('.col.empty');
+      var cols = document.querySelectorAll('.col');
 
-     			}
 
-     			for (var j = index; boardArray[j] === boardArray[j+testCases[counter0]]; j+=testCases[counter0]) {
+      function findLastEmptyCell(col) {
+        var cells = document.querySelectorAll(".col[data-col='" + col + "']");
+        for (var i = cells.length - 1; i >= 0; i--) {
+          var $cell = cells[i];
+          if ($cell.classList.contains('empty')) {
+            return $cell;
+          }
+        }
+        return null;
+      }
 
-     				countingToFour++;
-     				if (countingToFour === 4) {
-     					alert("Player " + boardArray[index] + " wins!");
-     					resetGame();
-     					return "Winner";
-     				}
 
-     			}
-     		}
-		//console.log(countingToFour);
-		countingToFour = 1;
-	}
-}
-}
+      var emptyColMouseleave = function() {
+        if (isGameOver) return;
+        var col = this.getAttribute('data-col');
+        var $lastEmptyCell = findLastEmptyCell(col);
+        $lastEmptyCell.classList.add('next-' + player)
+      }
+
+
+      var emptyColClick = function() {
+        if (isGameOver) return;
+        var col = this.getAttribute('data-col');
+        var $lastEmptyCell = findLastEmptyCell(col);
+        $lastEmptyCell.classList.remove('empty', 'next-' + player);
+        $lastEmptyCell.classList.add(player);
+        $lastEmptyCell.setAttribute('data-player', player);
+
+        var winner = checkForWinner(
+          $lastEmptyCell.getAttribute('data-row'),
+          $lastEmptyCell.getAttribute('data-col')
+        )
+
+        if (winner) {
+          isGameOver = true;
+          alert('Game Over! Player ' + player + ' has won!');
+          for(var i = 0; i < emptyCols.length; i++) {
+            emptyCols[i].classList.remove('empty')
+          }
+          return;
+        }
+
+        player = (player === 'red') ? 'black' : 'red';
+        onPlayerMove();
+
+        var event = document.createEvent('HTMLEvents');
+        event.initEvent('mouseenter', true, false);
+        this.dispatchEvent(event);
+
+      };
+
+
+      for(var i = 0; i < emptyCols.length; i++) {
+        emptyCols[i].addEventListener('mouseenter', emptyColMouseleave);
+        emptyCols[i].addEventListener('click', emptyColClick);
+      }
+
+
+      for(var i = 0; i < cols.length; i++) {
+        cols[i].addEventListener('mouseleave', function() {
+          for(var x = 0; x < cols.length; x++) {
+            cols[x].classList.remove('next-' + player);
+          }
+        })
+      }
+    }
+
+
+    function checkForWinner(row, col) {
+
+
+      function $getCell(i, j) {
+        var selector = ".col[data-row='" + i + "'][data-col='" + j + "']";
+        return document.querySelectorAll(selector)[0];
+      }
+
+      function checkDirection(direction) {
+        var total = 0;
+        var i = +(row) + direction.i;
+        var j = +(col) + direction.j;
+        var $next = $getCell(i, j);
+
+        while (i >= 0 &&
+          i < ROWS &&
+          j >= 0 &&
+          j < COLS &&
+          $next.getAttribute('data-player') === player
+        ) {
+          total++;
+          i += direction.i;
+          j += direction.j;
+          $next = $getCell(i, j);
+        }
+        return total;
+      }
+
+      function checkWin(directionA, directionB) {
+        var total = 1 +
+          checkDirection(directionA) +
+          checkDirection(directionB);
+        if (total >= 4) {
+          return player;
+        } else {
+          return null;
+        }
+      }
+
+      function checkDiagonalBLtoTR() {
+        return checkWin({i: 1, j: -1}, {i: 1, j: 1});
+      }
+
+      function checkDiagonalTLtoBR() {
+        return checkWin({i: 1, j: 1}, {i: -1, j: -1});
+      }
+
+      function checkVerticals() {
+        return checkWin({i: -1, j: 0}, {i: 1, j: 0});
+      }
+
+      function checkHorizontals() {
+        return checkWin({i: 0, j: -1}, {i: 0, j: 1});
+      }
+
+      return checkVerticals() ||
+        checkHorizontals() ||
+        checkDiagonalBLtoTR() ||
+        checkDiagonalTLtoBR();
+    }
+
+
+    function restart () {
+      container.innerHTML = '';
+      isGameOver = false;
+      player = 'red';
+
+      createGrid();
+      setupEventListeners(container);
+      onPlayerMove();
+    }
+
+
+    createGrid(container);
+    setupEventListeners(container);
+
+
+    var restartButton = document.getElementById('restart');
+    restartButton.addEventListener('click', restart);
+
+
+    // if player.className = red val of input  when click Submit updete player
+
+      var lastChange = document.querySelector("#player");
+      function updateTurn(name) {
+        lastChange.innerText = name;
+      }
+
+      var nameOne = document.querySelector('#name1');
+      var playerOne;
+
+      document.querySelector('#submit1').addEventListener('click', function (e) {
+        playerOne = nameOne.value;
+        nameOne.value = '';
+      })
+
+      var nameTwo = document.querySelector('#name2');
+      var playerTwo;
+
+      document.querySelector('#submit2').addEventListener('click', function (e) {
+        playerTwo = nameTwo.value;
+        nameTwo.value = '';
+      })
+  })
+
+})()

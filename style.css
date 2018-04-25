@@ -1,29 +1,135 @@
 body {
   text-align: center;
-  display: inline-block;
-margin: 10%;
-width: 40%;
-
+  min-width: 1200px;
 }
 
-.grid {
-  background-color: green;
+#connect4 {
+  background-color: blue;
   display: inline-block;
+  padding: 1em;
+  border-radius: .5em;
 }
- .gridEmpty {
-   height: 70px;
-   width: 70px;
-   display: inline-block;
-   background-color: white ;
-   border-radius: 50%;
-   margin : 4px;
- }
 
-.circleB {
+.col {
+  width: 70px;
+  height: 70px;
+  display: inline-block;
   background-color: white;
-width: 65px;
-height: 65px;
-border-radius: 50%;
-margin: auto;
-margin-top: 3px;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+.col.empty {
+  cursor: pointer;
+}
+
+.next-red {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.next-black {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.col.red {
+  background-color: red;
+}
+
+.col.black {
+  background-color: black;
+}
+
+#restart {
+  margin-top: 2em;
+  border: 1px solid #ccc;
+  padding: .5em 1em;
+  font-size: 1.3em;
+  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 3px;
+
+  transition: .3s background ease;
+}
+
+#restart:hover {
+  background: red;
+}
+
+#restart:active {
+  background: lightgreen;
+}
+
+.turn-announcement {
+  font-weight: normal;
+  font-size: 2em;
+  margin: 1em 0;
+}
+
+.red {
+  color: red;
+}
+
+.black {
+  color: grey;
+}
+
+footer {
+  font-weight: normal;
+  font-size: 2em;
+  margin: 1em 0;
+
+}
+
+#submit1  {
+  margin-top: 2em;
+border: 1px solid #ccc;
+padding: .5em 1em;
+font-size: 1em;
+background: none;
+-webkit-appearance: none;
+-moz-appearance: none;
+cursor: pointer;
+outline: none;
+border-radius: 1px;
+transition: .3s background ease;
+}
+
+#submit1:hover {
+  background: green;
+}
+
+#submit1:active {
+  background: lightgreen;
+}
+
+
+#submit2  {
+  margin-top: 2em;
+border: 1px solid #ccc;
+padding: .5em 1em;
+font-size: 1em;
+background: none;
+-webkit-appearance: none;
+-moz-appearance: none;
+cursor: pointer;
+outline: none;
+border-radius: 1px;
+transition: .3s background ease;
+}
+
+#submit2:hover {
+  background: green;
+}
+
+#submit2:active {
+  background: lightgreen;
+}
+label {
+  font-weight: normal;
+  font-size: 1.2em;
+  margin: 1em 0;
+
 }
