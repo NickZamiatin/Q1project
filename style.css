@@ -1,10 +1,33 @@
 body {
   text-align: center;
-  min-width: 1200px;
+  min-width: 100%;
+  background-image: url("white m&m.jpg");
+  font-style: bold;
+  background-size:100% 100%;
+background-repeat:no-repeat;
 }
 
+.backImd {
+  background-size:120px ;
+background-repeat:no-repeat;
+}
+
+.redUserImg {
+  width:200px;
+  height:190px;
+}
+
+.yellowUserImg {
+  width:250px;
+  height:190px;
+  margin-left: 179;
+padding-left: 122;
+}
+
+
+
 #connect4 {
-  background-color: blue;
+  background-color: #757067   ;
   display: inline-block;
   padding: 1em;
   border-radius: .5em;
@@ -28,28 +51,29 @@ body {
 }
 
 .next-black {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #efefae;
 }
 
 .col.red {
-  background-color: red;
+background-color: red;
+  background-image: url("https://www.google.com/search?q=m%26m+png&rlz=1C5CHFA_enUS789US790&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiOl5a_ltjaAhVPT98KHcW-DVwQ_AUICigB&biw=1536&bih=773&dpr=1.25#imgrc=ef7OrI6m7CLU1M:");
 }
 
 .col.black {
-  background-color: black;
+  background-color: yellow;
 }
 
 #restart {
   margin-top: 2em;
   border: 1px solid #ccc;
   padding: .5em 1em;
-  font-size: 1.3em;
+  font-size: 1.6em;
   background: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
   outline: none;
-  border-radius: 3px;
+  border-radius: 30px;
 
   transition: .3s background ease;
 }
@@ -59,12 +83,12 @@ body {
 }
 
 #restart:active {
-  background: lightgreen;
+  background: yellow;
 }
 
 .turn-announcement {
   font-weight: normal;
-  font-size: 2em;
+  font-size: 3em;
   margin: 1em 0;
 }
 
@@ -78,8 +102,8 @@ body {
 
 footer {
   font-weight: normal;
-  font-size: 2em;
-  margin: 1em 0;
+  font-size: 3em;
+  margin: 2em 0;
 
 }
 
@@ -87,22 +111,22 @@ footer {
   margin-top: 2em;
 border: 1px solid #ccc;
 padding: .5em 1em;
-font-size: 1em;
+font-size: 1.3em;
 background: none;
 -webkit-appearance: none;
 -moz-appearance: none;
 cursor: pointer;
 outline: none;
-border-radius: 1px;
+border-radius: 30px;
 transition: .3s background ease;
 }
 
 #submit1:hover {
-  background: green;
+  background: red;
 }
 
 #submit1:active {
-  background: lightgreen;
+  background: lighred;
 }
 
 
@@ -110,26 +134,27 @@ transition: .3s background ease;
   margin-top: 2em;
 border: 1px solid #ccc;
 padding: .5em 1em;
-font-size: 1em;
+font-size: 1.3em;
 background: none;
 -webkit-appearance: none;
 -moz-appearance: none;
 cursor: pointer;
 outline: none;
-border-radius: 1px;
+border-radius: 30px;
 transition: .3s background ease;
 }
 
 #submit2:hover {
-  background: green;
+  background: yellow;
 }
 
 #submit2:active {
-  background: lightgreen;
+  background: yellow;
 }
 label {
   font-weight: normal;
-  font-size: 1.2em;
+  font-size: 2.2em;
+  box-shadow: 20px 20px 20px;
   margin: 1em 0;
 
 }

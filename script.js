@@ -30,7 +30,7 @@
       if (player === 'red') {
         updateTurn(playerOne || 'red');
       } else {
-        updateTurn(playerTwo || 'black')
+        updateTurn(playerTwo || 'black');
       }
 
     }
@@ -39,12 +39,12 @@
 
       for (var row = 0; row < ROWS; row++) {
 
-        var $row = document.createElement('div')
+        var $row = document.createElement('div');
             $row.classList.add('row');
 
         for (var col = 0; col < COLS; col++) {
 
-          var $col = document.createElement('div')
+          var $col = document.createElement('div');
               $col.classList.add('col', 'empty');
               $col.setAttribute('data-col', col);
               $col.setAttribute('data-row', row);
@@ -80,7 +80,7 @@
         if (isGameOver) return;
         var col = this.getAttribute('data-col');
         var $lastEmptyCell = findLastEmptyCell(col);
-        $lastEmptyCell.classList.add('next-' + player)
+        $lastEmptyCell.classList.add('next-' + player);
       }
 
 
@@ -214,6 +214,7 @@
 
 
     // if player.className = red val of input  when click Submit updete player
+    //this its coreect 
 
       var lastChange = document.querySelector("#player");
       function updateTurn(name) {
