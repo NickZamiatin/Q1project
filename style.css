@@ -1,10 +1,13 @@
 body {
   text-align: center;
   min-width: 100%;
-  background-image: url("white m&m.jpg");
+  background-image: url("");
   font-style: bold;
   background-size:100% 100%;
 background-repeat:no-repeat;
+font-family: monospace;
+background-color: #dcdcdc;
+color: snow;
 }
 
 .backImd {
@@ -24,10 +27,13 @@ background-repeat:no-repeat;
 padding-left: 122;
 }
 
+.users {
+  margin-top: 10%;
+}
 
 
 #connect4 {
-  background-color: #757067   ;
+  background-color: #6495ed   ;
   display: inline-block;
   padding: 1em;
   border-radius: .5em;
@@ -50,21 +56,23 @@ padding-left: 122;
   background-color: rgba(255, 0, 0, 0.2);
 }
 
-.next-black {
+.next-yellow {
   background-color: #efefae;
 }
 
 .col.red {
 background-color: red;
-  background-image: url("https://www.google.com/search?q=m%26m+png&rlz=1C5CHFA_enUS789US790&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiOl5a_ltjaAhVPT98KHcW-DVwQ_AUICigB&biw=1536&bih=773&dpr=1.25#imgrc=ef7OrI6m7CLU1M:");
+  background-image: url('redM&M.png');
+  background-size: contain;
 }
 
-.col.black {
-  background-color: yellow;
+.col.yellow {
+  background-image: url('yellowM&M.png');
+  background-size: contain;
 }
 
 #restart {
-  margin-top: 2em;
+  margin-top: 1em;
   border: 1px solid #ccc;
   padding: .5em 1em;
   font-size: 1.6em;
@@ -74,7 +82,7 @@ background-color: red;
   cursor: pointer;
   outline: none;
   border-radius: 30px;
-
+  color: snow;
   transition: .3s background ease;
 }
 
@@ -96,14 +104,15 @@ background-color: red;
   color: red;
 }
 
-.black {
+.yellow {
   color: grey;
 }
 
 footer {
   font-weight: normal;
   font-size: 3em;
-  margin: 2em 0;
+  margin: 10%;
+    box-shadow: 20px 20px 20px;
 
 }
 
@@ -119,6 +128,7 @@ cursor: pointer;
 outline: none;
 border-radius: 30px;
 transition: .3s background ease;
+color: snow;
 }
 
 #submit1:hover {
@@ -142,6 +152,7 @@ cursor: pointer;
 outline: none;
 border-radius: 30px;
 transition: .3s background ease;
+color: snow;
 }
 
 #submit2:hover {

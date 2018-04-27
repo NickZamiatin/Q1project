@@ -12,25 +12,16 @@
     const playerSelector = document.getElementById('player');
 
 
-      // The dollar sign is commonly used as a shortcut to the
-      // function document.getElementById(). Because this function is fairly verbose and used frequently in JavaScript,
-      //  the $ has long been used as its alias, and many of the libraries available for use with JavaScript
-      //  create a $() function that references an element from the DOM if you pass it the id of that element
-
-
-
-
-
     function onPlayerMove() {
       playerSelector.textContent = player;
-      var className = player === 'red' ? 'red' : 'black';
-      playerSelector.classList.remove('red', 'black');
+      var className = player === 'red' ? 'red' : 'yellow';
+      playerSelector.classList.remove('red', 'yellow');
       playerSelector.classList.add(className);
 
       if (player === 'red') {
         updateTurn(playerOne || 'red');
       } else {
-        updateTurn(playerTwo || 'black');
+        updateTurn(playerTwo || 'yellow');
       }
 
     }
@@ -106,7 +97,7 @@
           return;
         }
 
-        player = (player === 'red') ? 'black' : 'red';
+        player = (player === 'red') ? 'yellow' : 'red';
         onPlayerMove();
 
         var event = document.createEvent('HTMLEvents');
@@ -212,9 +203,6 @@
     var restartButton = document.getElementById('restart');
     restartButton.addEventListener('click', restart);
 
-
-    // if player.className = red val of input  when click Submit updete player
-    //this its coreect 
 
       var lastChange = document.querySelector("#player");
       function updateTurn(name) {
