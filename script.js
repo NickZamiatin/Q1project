@@ -1,7 +1,6 @@
-(function(){
+(function () {
   'use strict';
-
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
 
     const ROWS = 6;
     const COLS = 7;
@@ -23,7 +22,6 @@
       } else {
         updateTurn(playerTwo || 'yellow');
       }
-
     }
 
     function createGrid() {
@@ -31,14 +29,14 @@
       for (var row = 0; row < ROWS; row++) {
 
         var $row = document.createElement('div');
-            $row.classList.add('row');
+        $row.classList.add('row');
 
         for (var col = 0; col < COLS; col++) {
 
           var $col = document.createElement('div');
-              $col.classList.add('col', 'empty');
-              $col.setAttribute('data-col', col);
-              $col.setAttribute('data-row', row);
+          $col.classList.add('col', 'empty');
+          $col.setAttribute('data-col', col);
+          $col.setAttribute('data-row', row);
 
           $row.appendChild($col);
 
@@ -67,7 +65,7 @@
       }
 
 
-      var emptyColMouseleave = function() {
+      var emptyColMouseleave = function () {
         if (isGameOver) return;
         var col = this.getAttribute('data-col');
         var $lastEmptyCell = findLastEmptyCell(col);
@@ -75,7 +73,7 @@
       }
 
 
-      var emptyColClick = function() {
+      var emptyColClick = function () {
         if (isGameOver) return;
         var col = this.getAttribute('data-col');
         var $lastEmptyCell = findLastEmptyCell(col);
@@ -91,7 +89,7 @@
         if (winner) {
           isGameOver = true;
           alert('Game Over! Player ' + player + ' has won!');
-          for(var i = 0; i < emptyCols.length; i++) {
+          for (var i = 0; i < emptyCols.length; i++) {
             emptyCols[i].classList.remove('empty')
           }
           return;
@@ -107,15 +105,15 @@
       };
 
 
-      for(var i = 0; i < emptyCols.length; i++) {
+      for (var i = 0; i < emptyCols.length; i++) {
         emptyCols[i].addEventListener('mouseenter', emptyColMouseleave);
         emptyCols[i].addEventListener('click', emptyColClick);
       }
 
 
-      for(var i = 0; i < cols.length; i++) {
-        cols[i].addEventListener('mouseleave', function() {
-          for(var x = 0; x < cols.length; x++) {
+      for (var i = 0; i < cols.length; i++) {
+        cols[i].addEventListener('mouseleave', function () {
+          for (var x = 0; x < cols.length; x++) {
             cols[x].classList.remove('next-' + player);
           }
         })
@@ -163,19 +161,43 @@
       }
 
       function checkDiagonalBLtoTR() {
-        return checkWin({i: 1, j: -1}, {i: 1, j: 1});
+        return checkWin({
+          i: 1,
+          j: -1
+        }, {
+          i: 1,
+          j: 1
+        });
       }
 
       function checkDiagonalTLtoBR() {
-        return checkWin({i: 1, j: 1}, {i: -1, j: -1});
+        return checkWin({
+          i: 1,
+          j: 1
+        }, {
+          i: -1,
+          j: -1
+        });
       }
 
       function checkVerticals() {
-        return checkWin({i: -1, j: 0}, {i: 1, j: 0});
+        return checkWin({
+          i: -1,
+          j: 0
+        }, {
+          i: 1,
+          j: 0
+        });
       }
 
       function checkHorizontals() {
-        return checkWin({i: 0, j: -1}, {i: 0, j: 1});
+        return checkWin({
+          i: 0,
+          j: -1
+        }, {
+          i: 0,
+          j: 1
+        });
       }
 
       return checkVerticals() ||
@@ -183,9 +205,8 @@
         checkDiagonalBLtoTR() ||
         checkDiagonalTLtoBR();
     }
-
-
-    function restart () {
+    
+    function restart() {
       container.innerHTML = '';
       isGameOver = false;
       player = 'red';
@@ -195,35 +216,29 @@
       onPlayerMove();
     }
 
-
     createGrid(container);
     setupEventListeners(container);
-
-
     var restartButton = document.getElementById('restart');
     restartButton.addEventListener('click', restart);
+    var lastChange = document.querySelector("#player");
+    function updateTurn(name) {
+      lastChange.innerText = name;
+    }
 
+    var nameOne = document.querySelector('#name1');
+    var playerOne;
 
-      var lastChange = document.querySelector("#player");
-      function updateTurn(name) {
-        lastChange.innerText = name;
-      }
+    document.querySelector('#submit1').addEventListener('click', function (e) {
+      playerOne = nameOne.value;
+      nameOne.value = '';
+    })
 
-      var nameOne = document.querySelector('#name1');
-      var playerOne;
+    var nameTwo = document.querySelector('#name2');
+    var playerTwo;
 
-      document.querySelector('#submit1').addEventListener('click', function (e) {
-        playerOne = nameOne.value;
-        nameOne.value = '';
-      })
-
-      var nameTwo = document.querySelector('#name2');
-      var playerTwo;
-
-      document.querySelector('#submit2').addEventListener('click', function (e) {
-        playerTwo = nameTwo.value;
-        nameTwo.value = '';
-      })
+    document.querySelector('#submit2').addEventListener('click', function (e) {
+      playerTwo = nameTwo.value;
+      nameTwo.value = '';
+    })
   })
-
 })()

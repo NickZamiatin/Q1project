@@ -1,32 +1,32 @@
 <html>
-  <head>
-    <title>Connect 4</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
+<head>
+  <title>Connect 4</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
+</head>
+<body>
+  <div class="users">
+    <div></div>
+    <label style="color: red">Player for Red</label>
+    <input type="text" name="name" id="name1">
+    <input type="Submit" name="submit" id="submit1" value="Submit">
+    
+    <label style="color: black">Player for Yellow </label>
+    <input type="text" name="name" id="name2">
+    <input type="Submit" name="submit" id="submit2" value="Submit">
+  </div>
+  <img src="redUser.png" alt="" class="redUserImg">
+  <img src="yellowUser.png" alt="" class="yellowUserImg">
+  <h4 class="turn-announcement" >It's <span id="player" class="red">red</span>'s turn!</h4>
+  <div>
+    <div id="connect4"></div>
+  </div>
+  <button id="restart">Restart</button>
 
-  <body>
-    <div class="users">
-      <label>Player for Red</label>
+  <footer style="color:hsl(120, 100%, 33%);"> This is my first project made by Nick Zamiatin 2018</footer>
+  <button id="restart">
+  <a href="https://nickzamiatin.com/">Portfolio</a></button>
+  <script src="script.js"></script>
+</body>
 
-      <input type="text" name="name" id="name1">
-      <input type="Submit" name="submit" id="submit1" value="Submit">
-
-      <label>Player for Yellow </label>
-      <input type="text" name="name" id="name2">
-      <input type="Submit" name="submit" id="submit2" value="Submit">
-    </div>
-    <img src="redUser.png" alt="" class="redUserImg">
-    <img src="yellowUser.png" alt="" class="yellowUserImg">
-    <h4 class="turn-announcement">It's <span id="player" class="red">red</span>'s turn!</h4>
-
-    <div>
-      <div id="connect4"></div>
-    </div>
-
-    <button id="restart">Restart</button>
-    <img class="backImd"src="http://2.bp.blogspot.com/-PkG9iGbFoHs/Th57AcaZAHI/AAAAAAAABd8/WtrQmLH2QcU/s1600/mms.png" alt="m&m">
-
-     <footer> The Q1 Project was made by Nick Zamiatin 2018</footer>
-    <script src="script.js"></script>
-  </body>
 </html>
